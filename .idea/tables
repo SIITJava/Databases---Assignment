@@ -1,0 +1,21 @@
+CREATE TABLE accommodation (
+  id BIGINT PRIMARY KEY,
+  type VARCHAR(32) NOT NULL,
+  bed_type VARCHAR(32) NOT NULL,
+  max_guests INT NOT NULL,
+  description VARCHAR(512)
+);
+
+CREATE TABLE room_fair (
+  id INT PRIMARY KEY,
+  value DOUBLE NOT NULL,
+  season VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE accommodation_room_fair_relation (
+  id INT PRIMARY KEY,
+  accommodation_id BIGINT NOT NULL,
+  room_fair_id INT NOT NULL,
+  FOREIGN KEY (accommodation_id) REFERENCES accommodation(id),
+  FOREIGN KEY (room_fair_id) REFERENCES room_fair(id)
+);
